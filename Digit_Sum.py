@@ -1,3 +1,4 @@
+#work in progress
 def add_digits(number):
     curr_total = 0
     for i in str(number):
