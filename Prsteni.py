@@ -1,3 +1,4 @@
+#work in progress
 from fractions import Fraction
 
 num_rings = int(input())
