@@ -1,3 +1,4 @@
+#Work in progress
 def server_time_check(task_config, task_times):
   task_config = list(map(int, task_config.split()))
   task_times = list(map(int, task_times.split()))
