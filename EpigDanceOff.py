@@ -1,3 +1,4 @@
+#work in progress
 import sys
 lines, chars = input().split()
 lines = int(lines)
