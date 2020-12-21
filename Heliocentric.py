@@ -1,3 +1,4 @@
+#work in progress
 import sys
 max_earth = 365
 max_mars = 687
