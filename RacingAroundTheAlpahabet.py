@@ -1,42 +1,38 @@
-def get_letter_val(current_letter):
-    if current_letter == ' ':
-        return 0
-    elif current_letter == "'":
-        return 1
+# in progress
 
-    return ord(current_letter) - ord('A') + 2
+space_size = 60 / 28
 
+def getLetterValue(letter):
+    if letter == ' ':
+        return 27
+    if letter == "'":
+        return 28
+    return ord(letter) - ord('A') + 1
 
-def get_best_path(first_val, second_val):
-    if abs(second_val - first_val) <= 14:
-        return abs(second_val - first_val)
+def getSpacesAway(firstLetter, secondLetter):
+    letter1 = getLetterValue(firstLetter)
+    letter2 = getLetterValue(secondLetter)
+    bigger = 0
+    smaller = 0
 
-    total = 0
-    if second_val < 14:
-        total += second_val
-        total += 28 - first_val
+    if letter2 > letter1:
+        bigger = letter2
+        smaller = letter1
     else:
-        total += first_val
-        total += 28 - second_val
+        bigger = letter1
+        smaller = letter2
 
-    return total
+    route1 = bigger - smaller
+    route2 = smaller + 28 - bigger
 
+    if route1 < route2:
+        return route1
+    return route2
 
-total_drills = int(input())
-
-for drill in range(total_drills):
-    racing_key = input()
-    total_feet = 0
-    for index in range(1, len(racing_key)):
-        past_letter = racing_key[index - 1]
-        current_letter = racing_key[index]
-
-        numeric_of_past = get_letter_val(past_letter)
-        numeric_of_current = get_letter_val(current_letter)
-        total_chars = get_best_path(numeric_of_past, numeric_of_current)
-        total_feet += total_chars * (60 / 28)
-
-    total_time = total_feet / 15
-    total_time += len(racing_key)
-
-    print(total_time)
+sentence = input()
+time = 0
+for index in range(1, len(sentence)):
+    distance = getSpacesAway(sentence[index], sentence[index - 1])
+    time += (distance * space_size) / 15
+    time += 1
+print(time)
